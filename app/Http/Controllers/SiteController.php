@@ -41,7 +41,7 @@ class SiteController extends Controller
         $custom = [
             "required" => "Field Harus Diisi",
             "email" => "Format email salah",
-            "confirmed" => "Password dan Confirm Password tidak sama"
+            "confirmed" => "password dan confirm password tidak sama"
         ];
         $this->validate($req, $rules, $custom);
         return view('register');
