@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
@@ -27,7 +28,24 @@ class SiteController extends Controller
                 'upass' => 'Password',
             ],
         );
-        return view('welcome');
+        if($username == "admin" && $password == "admin"){
+            return redirect("/admin");
+        }
+        else{
+            $check = DB::table("user")->where('username', $username)->count();
+            if($check){
+                $tempUser = DB::table("user")->where('username', $username)->get();
+                if($tempUser[0]->Password == $password){
+                    return redirect("/home");
+                }
+                else{
+                    return view('login', ['error' => 'wrong password']);
+                }
+            }
+            else{
+                return view('login', ['error' => 'username could not be found']);
+            }
+        }
     }
 
     public function cekRegister(Request $req){
@@ -39,9 +57,9 @@ class SiteController extends Controller
         ];
 
         $custom = [
-            "required" => "Field Harus Diisi",
-            "email" => "Format email salah",
-            "confirmed" => "password dan confirm password tidak sama"
+            "required" => "Please fill in all the fields",
+            "email" => "Email Format is not valid",
+            "confirmed" => "Password and Confirm Password doesn't match"
         ];
         $this->validate($req, $rules, $custom);
         return view('register');

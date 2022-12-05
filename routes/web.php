@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return redirect('/login');
+});
+Route::get('/login', function () {
     return view('login');
 });
 Route::get('/register', function () {
@@ -28,5 +31,13 @@ Route::get('/homeUser', function () {
 });
 Route::get('/homeAdmin', function () {
     return view('homeAdmin');
+});
+
+Route::get('/admin', function () {
+    return view('homeAdmin');
+});
+
+Route::get('home', function () {
+    return view('homeUser');
 });
 
