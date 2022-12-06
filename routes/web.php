@@ -20,11 +20,15 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/login', function () {
+    return view('login');
+});
 Route::get('/register', function () {
     return view('register');
 });
 Route::get('/cekLogin',[SiteController::class, 'cekLogin'])->name('login');
 Route::get('/cekRegister', [SiteController::class, 'cekRegister'])->name('cekRegister');
+Route::get('logout', [SiteController::class, 'logout'])->name('logout');
 
 Route::get('/homeUser', function () {
     return view('homeUser');

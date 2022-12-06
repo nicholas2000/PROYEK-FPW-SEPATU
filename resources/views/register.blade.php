@@ -17,10 +17,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="/" class="active" id="">Login</a>
+                                    <a href="/" class="" id="">Login</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="/register" id="">Register</a>
+                                    <a href="/register" style="color:#59B2E0" id="active">Register</a>
                                 </div>
                             </div>
                             <hr>
@@ -29,6 +29,12 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form id="login-form" action="/cekRegister"role="form" style="display: block;">
+                                        <div class="form-group">
+                                            <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Username" value="">
+                                        </div>
+                                        @error('name')
+                                            <div style="color: red;font-weight:700;">{{ $message }}</div>
+                                        @enderror
                                         <div class="form-group">
                                             <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
                                         </div>
@@ -57,7 +63,7 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Register">
                                                 </div>
                                             </div>
                                         </div>

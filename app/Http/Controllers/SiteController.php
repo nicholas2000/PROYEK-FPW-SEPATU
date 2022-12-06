@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -14,6 +16,7 @@ class SiteController extends Controller
     public function cekLogin(Request $request){
         $username = $request->username;
         $password = $request->password;
+
         $this->validate(
             $request,
             [
@@ -28,40 +31,45 @@ class SiteController extends Controller
                 'upass' => 'Password',
             ],
         );
-        if($username == "admin" && $password == "admin"){
-            return redirect("/admin");
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            $request->session()->regenerate();
+            return redirect()->intended('homeUser');
         }
-        else{
-            $check = DB::table("user")->where('username', $username)->count();
-            if($check){
-                $tempUser = DB::table("user")->where('username', $username)->get();
-                if($tempUser[0]->Password == $password){
-                    return redirect("/home");
-                }
-                else{
-                    return view('login', ['error' => 'wrong password']);
-                }
-            }
-            else{
-                return view('login', ['error' => 'username could not be found']);
-            }
-        }
+
+        return back()->withErrors([
+            'password' => 'Wrong username or password',
+        ]);
     }
 
     public function cekRegister(Request $req){
         $rules = [
-            'username' => ["required"],
-            'email' => ["required", "email"],
+            'name' => ["required"],
+            'username' => ["required","unique:tb_user"],
+            'email' => ["required", "email","unique:tb_user"],
             'password' => ["required", "confirmed"],
             'password_confirmation' => ["required"]
         ];
-
         $custom = [
-            "required" => "Please fill in all the fields",
-            "email" => "Email Format is not valid",
-            "confirmed" => "Password and Confirm Password doesn't match"
+            "required" => "Field Harus Diisi",
+            "email" => "Format email salah",
+            "confirmed" => "password dan confirm password tidak sama"
         ];
         $this->validate($req, $rules, $custom);
-        return view('register');
+        $user = new User([
+            'name' => $req->name,
+            'username' => $req->username,
+            'email' => $req->email,
+            'password' => Hash::make($req->password),
+        ]);
+        $user->save();
+
+        return view('login');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

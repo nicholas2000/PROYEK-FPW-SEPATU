@@ -21,7 +21,7 @@
                     <li class="sidebar-brand"> <a href="#"> Home </a> </li>
                     <li> <a href="#">Cart</a> </li>
                     <li> <a href="#">Profile</a> </li>
-                    <li> <a href="#">Logout</a> </li>
+                    <li> <a href="{{ route('logout') }}">Logout</a> </li>
 
                 </ul>
             </div> <!-- /#sidebar-wrapper -->
