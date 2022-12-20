@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - Home</title>
+    <title>Admin - Edit User</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
@@ -19,8 +19,18 @@
         <a href="{{ Route('logout') }}"><button class="butonNavbar">Logout</button></a>
     </div>
     <div class="contentAdmin">
-        <h1>Welcome, Admin</h1>
-        <h5>How is your day going?</h5>
+
+        <h3>Edit User</h3>
+        <form action="/edituser">
+            <input type="hidden" name="Id" value="{{ $User->user_id }}">
+            nama user <input type="text" name="nama_barang" placeholder="nama user" value="{{ $User->name }}">
+            <br>
+            email <input type="number" name="ukuran" placeholder="email" value="{{ $User->email }}"> <br>
+            username <input type="number" name="id_brand" placeholder="username" value="{{ $User->username }}"> <br>
+            password <input type="number" name="kategori" placeholder="password" value="{{ $User->password }}">
+            <br>
+            <input type="submit" value="submit">
+        </form>
     </div>
 </body>
 

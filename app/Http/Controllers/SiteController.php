@@ -35,6 +35,7 @@ class SiteController extends Controller
         );
         if ($username == "admin" && $password == "admin") {
             return redirect('homeAdmin');
+            //$this->middleware('mw_gotoadmin');
         } else if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
             return redirect()->intended('homeUser');

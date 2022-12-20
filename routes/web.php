@@ -42,10 +42,12 @@ Route::get('/homeUser', function () {
 Route::get('/homeAdmin', function () {
     return view('homeAdmin');
 })->name('homeAdmin')
-    // ->middleware('mw_login')
+    //->middleware('mw_login')
 ;
 
 Route::get('/tambahBarangAdmin', [AdminController::class, 'listBarang'])->name("tambahBarangAdmin");
+
+Route::get('/editUserAdmin', [AdminController::class, 'listUser'])->name("editUserAdmin");
 
 // Route::get('/admin', function () {
 //     return view('homeAdmin');
@@ -61,7 +63,12 @@ Route::get('/cobaEditBarang/{Id}', [AdminController::class, 'cobaEditBarang']);
 
 Route::get('/cobaDeleteBarang/{Id}', [AdminController::class, 'cobaDeleteBarang']);
 
+Route::get('/cobaEditUser/{user_id}', [AdminController::class, 'cobaEditUser']);
+
+Route::get('/cobaDeleteUser/{user_id}', [AdminController::class, 'cobaDeleteUser']);
+
 Route::get('/editbarang', [AdminController::class, 'editbarang']);
+Route::get('/edituser', [AdminController::class, 'edituser']);
 
 // Route::group(['middleware' => ['auth']], function(){
 
