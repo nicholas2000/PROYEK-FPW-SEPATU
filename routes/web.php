@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,9 @@ Route::get('/homeUser', function () {
 });
 Route::get('/homeAdmin', function () {
     return view('homeAdmin');
-});
+})->name('homeAdmin');
+
+Route::get('/tambahBarangAdmin', [AdminController::class, 'listBarang'])->name("tambahBarangAdmin");
 
 Route::get('/admin', function () {
     return view('homeAdmin');
@@ -44,4 +47,6 @@ Route::get('/admin', function () {
 Route::get('home', function () {
     return view('homeUser');
 });
+
+Route::get('/cobaTambahBarang', [AdminController::class, 'cobaTambahBarang']);
 

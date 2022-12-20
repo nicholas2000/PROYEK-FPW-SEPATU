@@ -16,19 +16,17 @@
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
-                    <li class="sidebar-brand"> <a href="#"> Home </a> </li>
+                    <li class="sidebar-brand"> <a href="{{Route('adminHome')}}"> Home </a> </li>
                     <li> <a href="#">Tambah Barang</a> </li>
                     <li> <a href="#">Edit Barang</a> </li>
                     <li> <a href="#">Edit User</a> </li>
-                    <li> <a href="#">Logout</a> </li>
+                    <li> <a href="{{Route('logout')}}">Logout</a> </li>
                 </ul>
             </div> <!-- /#sidebar-wrapper -->
             <!-- Page Content -->
             <div id="page-content-wrapper">
                 <div class="container-fluid">
-                    <h1>Simple Sidebar</h1>
-                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    <h1>Welcome, Admin</h1>
                 </div>
             </div> <!-- /#page-content-wrapper -->
         </div> <!-- /#wrapper -->
