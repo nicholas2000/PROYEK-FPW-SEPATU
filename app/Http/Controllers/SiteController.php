@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
-    public function input(){
+    public function input()
+    {
         return view('welcome');
     }
 
-    public function cekLogin(Request $request){
+    public function cekLogin(Request $request)
+    {
         $username = $request->username;
         $password = $request->password;
 
@@ -31,10 +33,9 @@ class SiteController extends Controller
                 'upass' => 'Password',
             ],
         );
-        if($username == "admin" && $password == "admin"){
+        if ($username == "admin" && $password == "admin") {
             return redirect('homeAdmin');
-        }
-        else if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        } else if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
             return redirect()->intended('homeUser');
         }
@@ -44,11 +45,12 @@ class SiteController extends Controller
         ]);
     }
 
-    public function cekRegister(Request $req){
+    public function cekRegister(Request $req)
+    {
         $rules = [
             'name' => ["required"],
-            'username' => ["required","unique:tb_user"],
-            'email' => ["required", "email","unique:tb_user"],
+            'username' => ["required", "unique:tb_user"],
+            'email' => ["required", "email", "unique:tb_user"],
             'password' => ["required", "confirmed"],
             'password_confirmation' => ["required"]
         ];
