@@ -24,4 +24,31 @@ class AdminController extends Controller
         ]);
         return redirect('/tambahBarangAdmin');
     }
+
+    public function cobaEditBarang(Request $req){
+        $item = barang::find($req->Id);
+        $param["barang"] = $item;
+
+        return view('editBarangAdmin', $param);
+    }
+
+    public function cobaDeleteBarang(Request $req){
+        barang::destroy($req->Id);
+
+        return redirect('/tambahBarangAdmin');
+    }
+
+    public function editbarang(Request $req){
+        /*$item = barang::find($req->Id);
+        $item->Nama_Barang = $req->nama_barang;
+        $item->Ukuran = $req->ukuran;
+        $item->Id_Brand = $req->id_brand;
+        $item->Kategori = $req->kategori;
+        $item->Harga = $req->harga;
+        $item->save();*/
+
+        barang::whereId($req->Id)->update($req->all());
+
+        return redirect('/tambahBarangAdmin');
+    }
 }

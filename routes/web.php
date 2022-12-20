@@ -50,3 +50,9 @@ Route::get('home', function () {
 
 Route::get('/cobaTambahBarang', [AdminController::class, 'cobaTambahBarang']);
 
+Route::get('/cobaEditBarang/{Id}', [AdminController::class, 'cobaEditBarang']);
+
+Route::get('/cobaDeleteBarang/{Id}', [AdminController::class, 'cobaDeleteBarang']);
+
+Route::get('/editbarang', [AdminController::class, 'editbarang']);
+

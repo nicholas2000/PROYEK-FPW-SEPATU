@@ -27,6 +27,7 @@
                     <th>id brand</th>
                     <th>kategori</th>
                     <th>harga</th>
+                    <th>Action</th>
                 </tr>
                 @foreach ($listBarang as $d)
                     <tr>
@@ -36,6 +37,10 @@
                         <td>{{$d->Id_Brand}}</td>
                         <td>{{$d->Kategori}}</td>
                         <td>{{$d->Harga}}</td>
+                        <td>
+                            <a href="{{url("/cobaEditBarang/$d->Id")}}"><button>Edit</button></a>
+                            <a href="{{url("/cobaDeleteBarang/$d->Id")}}"><button>Delete</button></a>
+                        </td>
                     </tr>
                 @endforeach
             </table>
