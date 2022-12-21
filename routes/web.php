@@ -49,6 +49,10 @@ Route::get('/tambahBarangAdmin', [AdminController::class, 'listBarang'])->name("
 
 Route::get('/editUserAdmin', [AdminController::class, 'listUser'])->name("editUserAdmin");
 
+Route::get('/tambahBrandAdmin', [AdminController::class, 'listBrand'])->name("tambahBrandAdmin");
+
+Route::get('/tambahKategoriAdmin', [AdminController::class, 'listKategori'])->name("tambahKategoriAdmin");
+
 // Route::get('/admin', function () {
 //     return view('homeAdmin');
 // });
@@ -59,15 +63,29 @@ Route::get('/editUserAdmin', [AdminController::class, 'listUser'])->name("editUs
 
 Route::get('/cobaTambahBarang', [AdminController::class, 'cobaTambahBarang']);
 
+Route::get('/cobaTambahBrand', [AdminController::class, 'cobaTambahBrand']);
+
+Route::get('/cobaTambahKategori', [AdminController::class, 'cobaTambahKategori']);
+
 Route::get('/cobaEditBarang/{Id}', [AdminController::class, 'cobaEditBarang']);
 
+Route::get('/cobaEditBrand/{Id_Brand}', [AdminController::class, 'cobaEditBrand']);
+
+Route::get('/cobaEditKategori/{Id_Kategori}', [AdminController::class, 'cobaEditKategori']);
+
 Route::get('/cobaDeleteBarang/{Id}', [AdminController::class, 'cobaDeleteBarang']);
+
+Route::get('/cobaDeleteBrand/{Id_Brand}', [AdminController::class, 'cobaDeleteBrand']);
+
+Route::get('/cobaDeleteKategori/{Id_Kategori}', [AdminController::class, 'cobaDeleteKategori']);
 
 Route::get('/cobaEditUser/{user_id}', [AdminController::class, 'cobaEditUser']);
 
 Route::get('/cobaDeleteUser/{user_id}', [AdminController::class, 'cobaDeleteUser']);
 
 Route::get('/editbarang', [AdminController::class, 'editbarang']);
+Route::get('/editBrand', [AdminController::class, 'editBrand']);
+Route::get('/editKategori', [AdminController::class, 'editKategori']);
 Route::get('/edituser', [AdminController::class, 'edituser']);
 
 // Route::group(['middleware' => ['auth']], function(){

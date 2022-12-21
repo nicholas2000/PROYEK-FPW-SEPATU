@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - Home</title>
+    <title>Admin - Edit Kategori</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
@@ -20,8 +20,16 @@
         <a href="{{ Route('logout') }}"><button class="butonNavbar">Logout</button></a>
     </div>
     <div class="contentAdmin">
-        <h1>Welcome, Admin</h1>
-        <h5>How is your day going?</h5>
+
+        <h2>{{ $kategori->Nama_Kategori }}</h2>
+
+        <h3>Edit Kategori</h3>
+        <form action="/editKategori">
+            <input type="hidden" name="Id_Kategori" value="{{ $kategori->Id_Kategori }}">
+            nama kategori <input type="text" name="Nama_Kategori" placeholder="nama kategori"
+                value="{{ $kategori->Nama_Kategori }}"> <br>
+            <input type="submit" value="submit">
+        </form>
     </div>
 </body>
 
